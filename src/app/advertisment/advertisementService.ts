@@ -4,7 +4,7 @@ export class AdvertisementService {
   private advertisements: Advertisment[] = [
     new Advertisment(1, 'central', 'Парк-отель, Калужское шоссе, 38 км от МКАД, НОВАЯ МОСКВА',
       'Продается парк-отель на участке 10,5Га (плюс 20 Га земли под дачное строительство или 8 Га земель поселений вдоль реки)',
-      290000000, 'руб', ['+7 495 782-41-64'],
+      290000000, 'руб', ['+8 495 782-41-64'],
       ['http://landestate.ru/img/p5fb0532831ebbfa9a0603e0e27feb10e-w1200-h800-te.jpg',
       'http://landestate.ru/img/pecbf88bc49ef3cad0b45b9bb1f7ad962-w1200-h800-te.jpg',
       'http://landestate.ru/img/pe14b684693b106703a73c2458700b672-w1200-h800-te.jpg',
