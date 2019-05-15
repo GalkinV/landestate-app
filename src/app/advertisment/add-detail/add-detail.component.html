@@ -1,0 +1,11 @@
+<div class="container">
+  <h4>
+    {{add.caption}}
+  </h4>
+  <p> {{add.description}} </p>
+  <p> Цена: {{add.price}} {{add.currency}}</p>
+  <p> Телефон: {{add.phone}} </p>
+  <img *ngFor="let img of add.imagePath"
+       [src]="img"
+       class="img-thumbnail">
+</div>
