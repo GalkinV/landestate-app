@@ -11,6 +11,7 @@ import {AddItemComponent} from './advertisment/advertisment-grid/add-item/add-it
 import {AddDetailComponent} from './advertisment/add-detail/add-detail.component';
 import { NgbdCarouselBasicComponent } from './advertisment/ngbd-carousel-basic/ngbd-carousel-basic.component';
 import {AuthModule} from './auth/auth.module';
+import {AuthService} from './auth/auth.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,9 @@ import {AuthModule} from './auth/auth.module';
     AuthModule,
     AppRoutingModule
   ],
-  providers: [AdvertisementService],
+  providers: [
+    AuthService,
+    AdvertisementService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
