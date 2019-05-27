@@ -9,15 +9,22 @@
         <a routerLink="/" class="navbar-brand mobilesOnly">+7 488 123-56-78</a>
       </div>
       <div class="col-lg-2">
-        <button class="btn navbar-btn" style="vertical-align: middle">Отправиь запрос</button>
+        <button class="btn navbar-btn" style="vertical-align: middle">Отправить запрос</button>
       </div>
     </div>
-  </div>
-  <ul class="nav navbar-nav">
-    <li routerLinkActive="active"><a routerLink="/ad/best">Лучшие предложения</a></li>
-    <li routerLinkActive="active"><a routerLink="/ad/central">Центральный район</a></li>
-    <li routerLinkActive="active"><a routerLink="/ad/region">Регионы</a></li>
-    <li routerLinkActive="active"><a routerLink="/ad/all">Показать все</a></li>
-  </ul>
+
+    <!--<div class="collapse navbar-collapse">-->
+
+      <ul class="nav navbar-nav">
+        <li routerLinkActive="active"><a routerLink="/ad/best">Лучшие предложения</a></li>
+        <li routerLinkActive="active"><a routerLink="/ad/central">Центральный район</a></li>
+        <li routerLinkActive="active"><a routerLink="/ad/region">Регионы</a></li>
+        <li routerLinkActive="active"><a routerLink="/ad/all">Показать все</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+          <li><a style="cursor: pointer;" (click)="onAdmin()">Админка</a></li>
+      </ul>
+    <!--</div>-->
 </div>
 

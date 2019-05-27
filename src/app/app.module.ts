@@ -12,6 +12,7 @@ import {AddDetailComponent} from './advertisment/add-detail/add-detail.component
 import { NgbdCarouselBasicComponent } from './advertisment/ngbd-carousel-basic/ngbd-carousel-basic.component';
 import {AuthModule} from './auth/auth.module';
 import {AuthService} from './auth/auth.service';
+import { AddListComponent } from './admin/add-list/add-list.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {AuthService} from './auth/auth.service';
     AdvertisementGridComponent,
     AddItemComponent,
     AddDetailComponent,
-    NgbdCarouselBasicComponent
+    NgbdCarouselBasicComponent,
+    AddListComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,7 @@ import {AuthService} from './auth/auth.service';
     AppRoutingModule
   ],
   providers: [
-    AuthService,
+    // AuthService,
     AdvertisementService],
   bootstrap: [AppComponent]
 })

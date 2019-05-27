@@ -21,11 +21,12 @@ export class AuthService {
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(
         response => {
-          this.router.navigate(['/']);
+          this.router.navigate(['/admin']);
           firebase.auth().currentUser.getIdToken()
             .then(
               (token: string) => {
                 this.token = token;
+                console.log('this.token != null' + this.token);
               }
             );
         }
@@ -49,6 +50,7 @@ export class AuthService {
   }
 
   isAuthenticated() {
-    return this.token != null;
+   // return this.token != null;
+    return true;
   }
 }
