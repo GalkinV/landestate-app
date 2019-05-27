@@ -10,6 +10,7 @@ import {AdvertisementService} from './advertisment/advertisementService';
 import {AddItemComponent} from './advertisment/advertisment-grid/add-item/add-item.component';
 import {AddDetailComponent} from './advertisment/add-detail/add-detail.component';
 import { NgbdCarouselBasicComponent } from './advertisment/ngbd-carousel-basic/ngbd-carousel-basic.component';
+import {AuthModule} from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { NgbdCarouselBasicComponent } from './advertisment/ngbd-carousel-basic/n
   ],
   imports: [
     BrowserModule,
+    AuthModule,
     AppRoutingModule
   ],
   providers: [AdvertisementService],
