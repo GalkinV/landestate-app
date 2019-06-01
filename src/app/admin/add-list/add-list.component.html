@@ -16,7 +16,7 @@
         <td>{{ad.caption}}</td>
         <td>{{ad.price + ' ' + ad.currency}}</td>
         <td><button class="btn btn-primary" (click)="onChangeAdd(ad.id)">Изменить</button> </td>
-        <td><button class="btn btn-danger">Удалить</button> </td>
+        <td><button class="btn btn-danger" (click)="onDeleteAdd(ad.id)">Удалить</button> </td>
       </tr>
 
       </tbody>

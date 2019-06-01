@@ -5,6 +5,7 @@ import {AddDetailComponent} from './advertisment/add-detail/add-detail.component
 import {AddListComponent} from './admin/add-list/add-list.component';
 import {AuthGuardService} from './auth/auth-guard.service';
 import {AuthService} from './auth/auth.service';
+import {AddEditComponent} from './admin/add-edit/add-edit.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'ad', pathMatch: 'full'},
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'ad/:type', component: AdvertisementGridComponent},
   { path: 'detail/:id', component: AddDetailComponent},
   { path: 'admin', component: AddListComponent, canActivate: [AuthGuardService]},
+  { path: 'admin/:id', component: AddEditComponent, canActivate: [AuthGuardService]},
 ];
 
 @NgModule({

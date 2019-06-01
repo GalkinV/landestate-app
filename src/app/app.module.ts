@@ -13,6 +13,8 @@ import { NgbdCarouselBasicComponent } from './advertisment/ngbd-carousel-basic/n
 import {AuthModule} from './auth/auth.module';
 import {AuthService} from './auth/auth.service';
 import { AddListComponent } from './admin/add-list/add-list.component';
+import { AddEditComponent } from './admin/add-edit/add-edit.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,11 +25,14 @@ import { AddListComponent } from './admin/add-list/add-list.component';
     AddItemComponent,
     AddDetailComponent,
     NgbdCarouselBasicComponent,
-    AddListComponent
+    AddListComponent,
+    AddEditComponent
   ],
   imports: [
     BrowserModule,
     AuthModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule
   ],
   providers: [

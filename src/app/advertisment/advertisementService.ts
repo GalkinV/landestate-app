@@ -1,6 +1,9 @@
 import {Advertisment} from './advertisment.module';
+import {Subject} from 'rxjs';
 
 export class AdvertisementService {
+  advertisementChanged = new Subject<Advertisment[]>();
+
   private advertisements: Advertisment[] = [
     new Advertisment(1, 'central', 'Парк-отель, Калужское шоссе, 38 км от МКАД, НОВАЯ МОСКВА',
       'Продается парк-отель на участке 10,5Га (плюс 20 Га земли под дачное строительство или 8 Га земель поселений вдоль реки)',
@@ -79,5 +82,25 @@ export class AdvertisementService {
       }
     }
     return null;
+  }
+
+  getAvailableRegions() {
+    return ['Central', 'Regions', 'Krimea'];
+  }
+
+  getAvailableCurrency() {
+    return ['Rub', 'USD', 'EUR'];
+  }
+
+  delAdvertisementById(id: number) {
+
+    let index;
+    for (index = 0; index < this.advertisements.length; ++index) {
+      if (+(this.advertisements[index].id) === +id) {  // Почему понадобился + перед id ???
+        this.advertisements.splice(index, 1);
+      }
+    }
+
+    this.advertisementChanged.next(this.advertisements.slice());
   }
 }
