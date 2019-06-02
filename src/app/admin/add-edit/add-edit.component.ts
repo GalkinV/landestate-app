@@ -3,6 +3,7 @@ import {Advertisment} from '../../advertisment/advertisment.module';
 import {ActivatedRoute, Params} from '@angular/router';
 import {AdvertisementService} from '../../advertisment/advertisementService';
 import {FormArray, FormControl, FormGroup} from '@angular/forms';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-add-edit',
@@ -16,7 +17,8 @@ export class AddEditComponent implements OnInit {
   private currencys;
   editMode = false;
   addForm: FormGroup;
-  constructor(private route: ActivatedRoute,
+
+    constructor(private route: ActivatedRoute,
               private advertisementService: AdvertisementService) { }
 
   ngOnInit() {
@@ -47,6 +49,15 @@ export class AddEditComponent implements OnInit {
       'description': new FormControl(description),
       'price': new FormControl(price)
     });
+  }
+
+  upload(event) {
+    // create a random id
+    const randomId = Math.random().toString(36).substring(2);
+    console.log(randomId);
+   
+
+     firebase.storage().ref(randomId).put(event.target.files[0]);
   }
 
 }

@@ -15,6 +15,9 @@ import {AuthService} from './auth/auth.service';
 import { AddListComponent } from './admin/add-list/add-list.component';
 import { AddEditComponent } from './admin/add-edit/add-edit.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { UploadFormComponent } from './admin/uploads/upload-form/upload-form.component';
+import { environment } from 'src/environments/environment.prod';
+import * as firebase from 'firebase';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     AddDetailComponent,
     NgbdCarouselBasicComponent,
     AddListComponent,
-    AddEditComponent
+    AddEditComponent,
+    UploadFormComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
   ],
   providers: [
     // AuthService,
-    AdvertisementService],
+    AdvertisementService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
