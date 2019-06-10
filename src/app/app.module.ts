@@ -17,6 +17,7 @@ import { AddEditComponent } from './admin/add-edit/add-edit.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { UploadFormComponent } from './admin/uploads/upload-form/upload-form.component';
 import { environment } from 'src/environments/environment.prod';
+import { HttpClientModule } from '@angular/common/http';
 import * as firebase from 'firebase';
 
 @NgModule({
@@ -34,6 +35,7 @@ import * as firebase from 'firebase';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AuthModule,
     FormsModule,
     ReactiveFormsModule,
