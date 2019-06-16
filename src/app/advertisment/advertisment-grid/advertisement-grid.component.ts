@@ -19,8 +19,8 @@ export class AdvertisementGridComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(
       (params: Params) => {
-        this.adType = params.type;
-        if (params.type === 'all') {
+        this.adType = params.region;
+        if (params.region === 'all') {
           this.advertisements = this.advertisementService.getAllAdvertisments();
         } else {
           this.advertisements = this.advertisementService.getAdvertisementsByType(this.adType);

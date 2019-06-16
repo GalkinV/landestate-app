@@ -10,7 +10,7 @@ import {AddEditComponent} from './admin/add-edit/add-edit.component';
 const routes: Routes = [
   { path: '', redirectTo: 'ad', pathMatch: 'full'},
   { path: 'ad', component: AdvertisementGridComponent},
-  { path: 'ad/:type', component: AdvertisementGridComponent},
+  { path: 'ad/:region', component: AdvertisementGridComponent},
   { path: 'detail/:id', component: AddDetailComponent},
   { path: 'admin', component: AddListComponent, canActivate: [AuthGuardService]},
   { path: 'admin/:id', component: AddEditComponent, canActivate: [AuthGuardService]},

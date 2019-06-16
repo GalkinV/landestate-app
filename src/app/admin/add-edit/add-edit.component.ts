@@ -25,7 +25,7 @@ export class AddEditComponent implements OnInit {
                private router: Router) { }
 
   ngOnInit() {
-    this.route.params.subscribe(
+      this.route.params.subscribe(
       (params: Params) => {
         this.addId = params.id;
         this.add = this.advertisementService.getAdvertisementById(this.addId);
@@ -38,6 +38,7 @@ export class AddEditComponent implements OnInit {
   }
 
   private initForm() {
+
     let caption = '';
     let description = '';
     let price = 0;
@@ -45,7 +46,8 @@ export class AddEditComponent implements OnInit {
     let region = '';
     let phone = [];
     let imgFilesList = new FormArray([]);
-    const imgFiles = new FormArray([]);
+    const imagePath = new FormArray([]);
+    let id = 0;
    // 
 
     if (this.editMode) {
@@ -53,9 +55,18 @@ export class AddEditComponent implements OnInit {
       description = this.add.description;
       price = this.add.price;
       currency = this.add.currency;
-      region = this.add.type;
+      region = this.add.region;
       phone = this.add.phone;
+      if(this.add.imagePath) {
+        for(let image of this.add.imagePath) {
+          imgFilesList.push(
+            new FormControl(image)
+          );
+        }
+      }
+      id = this.add.id;
     }
+
 
     this.addForm = new FormGroup({
       'caption': new FormControl(caption),
@@ -64,38 +75,69 @@ export class AddEditComponent implements OnInit {
       'currency': new FormControl(currency),
       'region': new FormControl(region),
       'phone': new FormControl(phone),
-      ImgFiles: imgFilesList
+      imagePath: imgFilesList,
+      'id': new FormControl(id)
     });
 
-    this.addImageSelectElement();
+    console.log(this.addForm);
+
+   // this.addImageSelectElement();
   }
 
   upload(event) {
+ 
+    console.log(this.addId);
     // const randomId = Math.random().toString(36).substring(2);
     // console.log(randomId);
-    firebase.storage().ref(event.target.files[0].name).put(event.target.files[0]);
-    console.log(event);
-    this.addImageSelectElement();
+    let uploadTask = firebase.storage().ref(event.target.files[0].name).put(event.target.files[0]);
+
+    let myVar = this;
+
+    uploadTask.on('state_changed', 
+        function(snapshot){  }, 
+        function(error) { console.log(error);  },
+        function() {
+          
+          uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
+          console.log('File available at', downloadURL);
+          
+          (<FormArray> myVar.addForm.get('imagePath')).push(
+            new FormControl(downloadURL)
+          );
+          
+        });
+    });
+
+
+     console.log(event);
+    
+     this.addImageSelectElement();
   
   }
 
   addImageSelectElement() {
-    (<FormArray> this.addForm.get('ImgFiles')).push(
-      new FormGroup({
-        imgFile: new FormControl(null)
-      })
-    );
+    // (<FormArray> this.addForm.get('ImgFiles')).push(
+    //     new FormControl(null)
+    // );
+  }
+
+
+  addImageSelectElementValue(path: string) {
+    // (<FormArray> this.addForm.get('ImgFiles')).push(
+    //     new FormControl(path)
+    // );
   }
 
   getControls() {
-    return (<FormArray> this.addForm.get('ImgFiles')).controls;
+   // console.log((<FormArray> this.addForm.get('imagePath')).controls);
+    return (<FormArray> this.addForm.get('imagePath')).controls;
   }
 
   onSubmit() {
 
     if (this.editMode) {
       // this.recipeService.updateRecipe(this.id, this.recipeForm.value);
-      console.log(this.addForm.value);
+       console.log(this.addForm.value);
       this.advertisementService.saveAdvertisement(this.addId, this.addForm.value);
     } else {
      //  this.recipeService.addRecipe(this.recipeForm.value);
@@ -106,7 +148,5 @@ export class AddEditComponent implements OnInit {
   onCancel() {
     this.router.navigate(['../'], {relativeTo: this.route});
   }
-
-
 
 }

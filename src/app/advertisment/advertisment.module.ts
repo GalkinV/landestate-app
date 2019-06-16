@@ -1,6 +1,6 @@
 export class Advertisment {
   public id: number;
-  public  type: string;
+  public  region: string;
   public caption: string;
   public description: string;
   public price: number;
@@ -11,7 +11,7 @@ export class Advertisment {
   constructor(id: number, type: string, caption: string, desc: string, price: number,
               currency: string, phone: string[], imagePath: string[]) {
     this.id = id;
-    this.type = type;
+    this.region = type;
     this.caption = caption;
     this.description = desc;
     this.price = price;
