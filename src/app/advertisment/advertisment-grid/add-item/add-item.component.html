@@ -1,4 +1,4 @@
-<div class="col-lg-4 col-md-3 col-sm-6">
+<div class="col-lg-4 col-md-6 col-sm-8">
   <div class="ad">
     <div class="ad-caption">
       <div class="row">
@@ -14,7 +14,7 @@
       <img *ngFor="let img of advertisement.imagePath"
            [src]="img"
            class="img-responsive"
-           style="max-height: 60px; height: 60px; display: inline-block; cursor: pointer;"
+           style="min-height:60px; height: 60px; width: 90px; display: inline-block; cursor: pointer;"
            (click)="onImage(img)">
     </div>
     <div class="ad-bg-colour ad-description">{{ advertisement.description }}</div>
@@ -23,12 +23,9 @@
   </div>
 </div>
 
+<!-- Галерея, при выборе фоток -->
 <div *ngIf="slideShow" class="message-wrapper">
-  <!--<div class="message">-->
-
     <app-ngbd-carousel-basic></app-ngbd-carousel-basic>
-
-  <!--</div>-->
 </div>
 
 

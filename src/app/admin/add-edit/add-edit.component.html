@@ -68,27 +68,24 @@
 
           <div class="row">
             <div class="col-xs-12" formArrayName="imagePath">
-              <label for="imagePath">Файлы с картинками:</label>
+              <label for="imagePath">Файлы с картинками:</label><br>
               
-              <div class="container">
-                  <div class="col-xs-3"
-                      *ngFor="let imgFilesCtrl of getControls(); let i = index"
-                      [formGroupName]="i"
-                        style="margin-top: 10px"
-                        >
-                    <div class="row">
-                        <div >
-                          <img [src]="imgFilesCtrl.value" style="max-height: 100px; height: 100px; display: inline-block; cursor: pointer;">
-                      
-                          <button class="btn btn-danger bottomright"  (click)="onDeleteImage(i)">X</button>
-                        </div>
+                    <!-- <div style="border: 1px solid #949599; height: 158px; margin: 2px; padding: 2px; float: left"
+                       *ngFor="let imgFilesCtrl of getControls(); let i = index"
+                       [formGroupName]="i" >
+                            <img [src]="imgFilesCtrl.value" style="max-height: 100%; height: 100%;  cursor: pointer;"> 
+                            <button class="btn btn-danger"  (click)="onDeleteImage(i)">X</button> 
+                    </div>  -->
+
+
+                    <div class="block" *ngFor="let imgFilesCtrl of getControls(); let i = index" [formGroupName]="i">
+                        <img class="kartinka" [src]="imgFilesCtrl.value"> 
+                        <button  type="button" class="picture__button" (click)=onDeleteImage(imgFilesCtrl.value)>x</button>
                     </div>
-                  </div>
-                </div>
-                
+
               </div>
           </div>
-          <input type="file" class="form-control" formControlName="imagePath" (change)="upload($event)" accept=".png,.jpg" /> 
+          <input type="file" class="form-control" formControlName="imagePath" (change)="upload($event)" accept=".png,.jpg" multiple="multiple"/> 
            <!-- webkitdirectory  -->
 
         </div>
@@ -102,7 +99,7 @@
               style="margin-right: 10px">Сохранить</button>
             <button type="submit" class="btn btn-danger" (click)="onCancel()">Отмена</button>
           </div>
-        </div>
+      </div>
     </form>
   </div>
 </div>

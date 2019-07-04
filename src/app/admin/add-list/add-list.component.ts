@@ -30,11 +30,15 @@ export class AddListComponent implements OnInit {
 
   onChangeAdd(id: number) {
     console.log('Change ' + id);
-    this.router.navigate(['/admin', id]);
+    this.router.navigate(['/admin/edit', id]);
   }
 
   onDeleteAdd(id: number) {
     console.log('Delete ' + id);
     this.advertisementService.delAdvertisementById(id);
+  }
+
+  onNewClick() {
+    this.router.navigate(['/admin/new']);
   }
 }

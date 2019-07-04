@@ -65,6 +65,10 @@ export class AddEditComponent implements OnInit {
         }
       }
       id = this.add.id;
+    } 
+    else {
+      id = Math.floor(Math.random() * 2147483647);
+      this.addId = id;
     }
 
 
@@ -86,10 +90,13 @@ export class AddEditComponent implements OnInit {
 
   upload(event) {
  
-    console.log(this.addId);
+
     // const randomId = Math.random().toString(36).substring(2);
-    // console.log(randomId);
-    let uploadTask = firebase.storage().ref(event.target.files[0].name).put(event.target.files[0]);
+ 
+    for(let file of event.target.files) {
+      console.log(file.name);
+
+    let uploadTask = firebase.storage().ref(file.name).put(file);
 
     let myVar = this;
 
@@ -107,9 +114,9 @@ export class AddEditComponent implements OnInit {
           
         });
     });
+    }
 
-
-     console.log(event);
+//     console.log(event);
     
      this.addImageSelectElement();
   
@@ -135,18 +142,37 @@ export class AddEditComponent implements OnInit {
 
   onSubmit() {
 
-    if (this.editMode) {
-      // this.recipeService.updateRecipe(this.id, this.recipeForm.value);
-       console.log(this.addForm.value);
+    console.log('___onSubmit___');
+    console.log(this.addForm.value);
+    if (this.editMode) {     
       this.advertisementService.saveAdvertisement(this.addId, this.addForm.value);
     } else {
-     //  this.recipeService.addRecipe(this.recipeForm.value);
+      this.advertisementService.saveAdvertisement(this.addId, this.addForm.value);
     }
     this.onCancel();
   }
 
   onCancel() {
-    this.router.navigate(['../'], {relativeTo: this.route});
+    console.log('___onCancel___');
+   // this.router.navigate(['../../'], {relativeTo: this.route});
+  }
+
+  onDeleteImage(n: string) {
+    console.log('_____onDeleteImage_____');
+    console.log(n);
+
+    // Create a reference to the file to delete
+    let desertRef = firebase.storage().refFromURL('https://firebasestorage.googleapis.com/v0/b/landestate-rus.appspot.com/o/obj36.jpg');
+    console.log(desertRef);
+
+    // Delete the file
+    // desertRef.delete().then(function() {
+    //   console.log( 'File deleted successfully');
+    // }).catch(function(error) {
+    //   console.log( 'Uh-oh, an error occurred');
+    // });
+
+
   }
 
 }

@@ -62,7 +62,7 @@ export class AdvertisementService implements OnInit{
         'http://landestate.ru/img/pe14b684693b106703a73c2458700b672-w1200-h800-te.jpg',
         'http://landestate.ru/img/pe508436487dae0784d7b1fb579d355e8-w1200-h800-te.jpg'])
   ];
-  //constructor() { }
+
   constructor(private httpClient: HttpClient,
               private authService: AuthService) { }
 
@@ -71,8 +71,6 @@ export class AdvertisementService implements OnInit{
   }
 
   getAllAdvertisments() {
-    console.log(this.advertisements);
-
     this.httpClient
       .get<Advertisment[]>('https://landestate-rus.firebaseio.com/ad.json', {
         observe: 'body',
@@ -80,19 +78,15 @@ export class AdvertisementService implements OnInit{
       })
       .subscribe(
         (data: Advertisment[]) => {
-         // console.log(<Advertisment>data[2]);
-         console.log('*******');
-         console.log(data);
-         this.advertisements = data;
-
-         this.advertisementChanged.next(this.advertisements.slice());
-         // console.log(this.advertisements);
+          //  console.log(data);
+          // this.advertisements = data;
+          // this.advertisementChanged.next(this.advertisements.slice());
         }
       );
 
 
 
-   return this.advertisements.slice();
+    return this.advertisements.slice();
   }
 
   getAdvertisementsByType(region: string) {

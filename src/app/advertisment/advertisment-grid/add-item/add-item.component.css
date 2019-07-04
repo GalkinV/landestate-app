@@ -10,6 +10,10 @@
 /*.ad-caption:hover ~ .ad-phone {*/
   /*background: red;*/
 /*}*/
+.ad-description {
+  height: 85px;
+  overflow: hidden;
+}
 
 .ad:hover .ad-phone{
   background: LightGray;
@@ -18,7 +22,7 @@
   background: DarkGray;
 }
 .ad:hover .ad-description{
-  background: LightGray;
+  background: LightGray; 
 }
 .ad:hover .ad-price{
   background: LightGray;

@@ -13,7 +13,8 @@ const routes: Routes = [
   { path: 'ad/:region', component: AdvertisementGridComponent},
   { path: 'detail/:id', component: AddDetailComponent},
   { path: 'admin', component: AddListComponent, canActivate: [AuthGuardService]},
-  { path: 'admin/:id', component: AddEditComponent, canActivate: [AuthGuardService]},
+  { path: 'admin/edit/:id', component: AddEditComponent, canActivate: [AuthGuardService]},
+  { path: 'admin/new', component: AddEditComponent, canActivate: [AuthGuardService]}
 ];
 
 @NgModule({
